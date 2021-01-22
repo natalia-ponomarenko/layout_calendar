@@ -1,3 +1,69 @@
+@import "variables";
+@import "mixins";
+
+html {
+  font-family: $font-family;
+  font-size: $font-size;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
+}
+
+.calendar {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px auto;
+  max-width: $max-width;
+  gap: $gap;
+
+  & div {
+    @include cell;
+    display: block;
+    line-height: 100px;
+    text-align: center;
+  }
+}
+
+@for $number from 1 through 31 {
+  .calendar div:nth-child(#{$number}) {
+    &::after {
+      content: "#{$number}";
+    }
+  }
+}
+
+@each $month in $months {
+  .calendar-#{$month} div:nth-child(-n + #{$month}) {
+    display: block;
+  }
+}
+
+@each $day, $shift in $week {
+  .calendar-#{$day} div:first-child {
+    margin-left: #{$shift};
+  }
+}
+
+.calendar-28 div:nth-child(29),
+.calendar-28 div:nth-child(30),
+.calendar-28 div:nth-child(31) {
+  display: none;
+}
+
+.calendar-29 div:nth-child(29),
+.calendar-29 div:nth-child(30) {
+  display: none;
+}
+
+.calendar-30 div:nth-child(31) {
+  display: none;
+}
+
+.calendar div:hover {
+  @include hover;
 }

@@ -1,0 +1,17 @@
+$font-family: arial, helvetica, sans-serif;
+$font-size: 30px;
+$height: 100px;
+$width: 100px;
+$gap: 1px;
+$max-width: ($width + $gap)* 7;
+$shift: $width + $gap;
+
+$week:
+  "tue" $shift,
+  "wed" $shift * 2,
+  "thu" $shift * 3,
+  "fri" $shift * 4,
+  "sat" $shift * 5,
+  "sun" $shift * 6;
+
+$months: 28, 29, 30, 31;

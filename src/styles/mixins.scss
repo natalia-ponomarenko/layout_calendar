@@ -1,0 +1,12 @@
+@mixin cell {
+  height: 100px;
+  width: 100px;
+  border: 1px solid black;
+  background-color: #eee;
+}
+
+@mixin hover {
+  background-color: pink;
+  transform: translateY(-20px);
+  transition: all 0.5s ease-out;
+}
